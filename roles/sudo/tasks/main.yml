@@ -1,0 +1,7 @@
+---  
+- name:   Install sudo
+  apt:   name=sudo state=present
+
+- name:   copy sudoers file
+  copy:   src=sudoers.in dest=/etc/sudoers backup=yes validate='visudo -cf %s'
+

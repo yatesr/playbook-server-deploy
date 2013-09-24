@@ -1,0 +1,7 @@
+---  
+- name: Install ufw
+  apt: name=ufw state=installed
+
+- name: configure ufw to limit ssh and enable on boot
+  command: ufw allow ssh
+  command: ufw --force enable

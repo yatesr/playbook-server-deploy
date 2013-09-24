@@ -1,0 +1,12 @@
+---
+- name: Setup server
+  hosts: servers
+  user: root
+#  sudo: True
+
+  roles:
+    - common
+    - user
+    - sudo
+    - ssh
+#    - ufw

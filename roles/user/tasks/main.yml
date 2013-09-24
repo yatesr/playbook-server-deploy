@@ -1,0 +1,13 @@
+---  
+- name: Create wheel group
+  group: name=wheel state=present
+
+- name:   Add user
+  user:   name={{ user }} state=present append=yes generate_ssh_key=yes groups=wheel shell=/bin/bash ssh_key_bits=4096
+  
+- name: Lock password
+  command:   /usr/bin/passwd -l {{ user }}
+
+- name:   SSH Authorized Key
+  authorized_key:   user={{ user }} state=present key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+

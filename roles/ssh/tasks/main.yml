@@ -1,0 +1,4 @@
+---  
+- name:  Lockdown SSH - password login disabled
+  copy: src=sshd_config dest=/etc/ssh/sshd_config backup=yes
+  notify: Restart SSH
